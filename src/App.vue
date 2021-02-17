@@ -101,22 +101,64 @@
                 <v-row justify="center" class="mt-15">
                   <v-col cols="6" sm="12" md="6">
                     <div class="d-flex flex-column">
-                      <v-text-field
-                        v-model="email"
-                        dark
-                        placeholder="youremail@gmail.com"
-                        label="Enter email address"
-                        filled
-                      ></v-text-field>
-                      <div class="d-flex justify-center">
-                        <v-btn
-                          @click="subscribe"
-                          :loading="isSubscribing"
-                          depressed
-                          color="primary"
-                          x-large
-                        >Join our mailing list</v-btn>
-                      </div>
+                      <mailchimp-subscribe
+                        url="https://gmail.us1.list-manage.com/subscribe/post-json"
+                        user-id="7ef2d2cc1a87ad9217ec27af2"
+                        list-id="503436a001"
+                        @error="onError"
+                        @success="onSuccess"
+                      >
+                        <template v-slot="{ subscribe, setEmail, error, success, loading }">
+                          <form @submit.prevent="subscribe">
+                            <!-- <input type="email"  /> -->
+                            <v-text-field
+                              @input="setEmail($event)"
+                              dark
+                              type="email"
+                              placeholder="youremail@gmail.com"
+                              label="Enter email address"
+                              filled
+                            ></v-text-field>
+                            <div class="d-flex justify-center mb-4">
+                              <v-btn
+                                type="submit"
+                                :loading="loading"
+                                depressed
+                                color="primary"
+                                x-large
+                              >Join our mailing list</v-btn>
+                            </div>
+                            <!-- <button type="submit">Submit</button> -->
+                            <div
+                              v-if="error"
+                              class="text-center font-italic"
+                            >Something went wrong try again.</div>
+                            <div
+                              v-if="success"
+                              class="text-center font-italic"
+                            >Successfully subscribed!</div>
+                          </form>
+                        </template>
+                      </mailchimp-subscribe>
+                      <!-- <form ref="mailchimpForm" :action="url" method="get">
+                        <v-text-field
+                          v-model="email"
+                          dark
+                          type="email"
+                          placeholder="youremail@gmail.com"
+                          label="Enter email address"
+                          filled
+                        ></v-text-field>
+                        <div class="d-flex justify-center">
+                          <v-btn
+                            @click="subscribe"
+                            :loading="isSubscribing"
+                            depressed
+                            color="primary"
+                            x-large
+                          >Join our mailing list</v-btn>
+                        </div>
+                      </form>-->
                     </div>
                   </v-col>
                 </v-row>
@@ -168,6 +210,7 @@
 <script>
 import VueSlickCarousel from "vue-slick-carousel";
 import "vue-slick-carousel/dist/vue-slick-carousel.css";
+import MailchimpSubscribe from "vue-mailchimp-subscribe";
 
 import "vue-slick-carousel/dist/vue-slick-carousel-theme.css";
 
@@ -175,11 +218,11 @@ export default {
   name: "App",
 
   components: {
-    VueSlickCarousel
+    VueSlickCarousel,
+    MailchimpSubscribe
   },
 
   data: () => ({
-    isSubscribing: false,
     email: "",
     highlightText:
       "Empowering students with the tools necessary to secure their finances in the future.",
@@ -239,36 +282,11 @@ export default {
     }
   }),
   methods: {
-    async subscribe() {
-      let mailchimpInstance = "us1";
-      let listUniqueId = "503436a001";
-      let token = "bc19f1f0e0604a0a04f03a56d19e78aa-us1";
-
-      this.isSubscribing = true;
-
-      let url = `https://${mailchimpInstance}.api.mailchimp.com/3.0/lists/${listUniqueId}/members/`;
-
-      let res = await fetch(url, {
-        method: "POST",
-        mode: "cors",
-        headers: {
-          "Content-Type": "application/json;charset=utf-8",
-          Authorization: `Basic ${token}`
-        },
-        body: JSON.stringify({
-          email_address: this.email,
-          status: "subscribed"
-        })
-      })
-        .then(res => {
-          this.isSubscribing = false;
-          return res.json();
-        })
-        .catch(() => {
-          this.isSubscribing = false;
-        });
-
-      console.log(res);
+    onError() {
+      // handle error
+    },
+    onSuccess() {
+      // handle success
     }
   }
 };
