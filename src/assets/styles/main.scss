@@ -2,10 +2,9 @@
 *,
 body, html {
   box-sizing: border-box;
-  overflow-x: hidden;
 }
 
-html { overflow-y: auto }
+html, body{ overflow: auto }
 
 
 .fs-15{

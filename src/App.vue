@@ -60,6 +60,40 @@
               </v-col>
             </v-row>
             <v-row>
+              <v-col>
+                <v-row justify="center" class="mt-5">
+                  <v-col cols="12" sm="12" md="6">
+                    <div class="d-flex justify-start">
+                      <iframe
+                        width="100%"
+                        height="700px"
+                        src="https://www.youtube.com/embed/dhD2T8Ty_yg"
+                        frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen
+                      ></iframe>
+                    </div>
+                  </v-col>
+                  <v-col cols="12" md="6">
+                    <p class="text-h4 d-inline-flex" style="position: relative;">
+                      <span style="z-index: 40" class="font-weight-bold">About EagleVest</span>
+                      <span class="border-absolute"></span>
+                    </p>
+                    <p
+                      class="font-weight-light text-h5 pr-10"
+                      :class="{'text-h6':$vuetify.breakpoint.smAndDown}"
+                    >We are a people of immense zeal and unmatched skills, each of us uniquely complementing one another bblah blah blah. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Soluta facere, optio eum laudantium unde dolore voluptatem! Provident tempore aspernatur hic, vitae aliquam, nihil illo assumenda fugit consequatur consectetur odit itaque? Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloribus velit, omnis tenetur incidunt ullam molestiae nisi magni neque obcaecati voluptatem repudiandae quibusdam accusamus cupiditate exercitationem aliquid minima et. Aut, architecto? Lorem ipsum dolor sit amet consectetur, adipisicing elit. Incidunt dolorum facilis deserunt perspiciatis debitis libero repudiandae similique, sunt quos delectus nihil, aliquid dicta rerum velit accusamus adipisci maxime magni facere.</p>
+                    <!-- <div class="mt-6 d-flex">
+                      <div class="avatar-control mr-5" @click="$refs.carousel.prev()">
+                        <v-icon color="white">mdi-chevron-left</v-icon>
+                      </div>
+                      <div class="avatar-control" @click="$refs.carousel.next()">
+                        <v-icon color="white">mdi-chevron-right</v-icon>
+                      </div>
+                    </div>-->
+                  </v-col>
+                </v-row>
+              </v-col>
               <v-col cols="12">
                 <v-row align="start" justify="space-between" class="mt-x mb-16">
                   <v-col cols="12" md="4">
@@ -69,6 +103,7 @@
                     </p>
                     <p
                       class="font-weight-light text-h5 pr-10"
+                      :class="{'text-h6':$vuetify.breakpoint.smAndDown}"
                     >We are a people of immense zeal and unmatched skills, each of us uniquely complementing one another bblah blah blah</p>
                     <div class="mt-6 d-flex">
                       <div class="avatar-control mr-5" @click="$refs.carousel.prev()">
@@ -99,7 +134,7 @@
               </v-col>
               <v-col>
                 <v-row justify="center" class="mt-15">
-                  <v-col cols="6" sm="12" md="6">
+                  <v-col cols="12" sm="12" md="6">
                     <div class="d-flex flex-column">
                       <mailchimp-subscribe
                         url="https://gmail.us1.list-manage.com/subscribe/post-json"
@@ -168,11 +203,11 @@
           <v-footer dark color="black">
             <v-container class="mx-auto pt-16">
               <v-row align="center" justify="space-around">
-                <v-col cols="3">
+                <v-col cols="12" md="4">
                   <h3>EagleVest.</h3>
                   <p class="font-weight-light">{{ highlightText }}</p>
                 </v-col>
-                <v-col cols="4">
+                <v-col cols="12" md="4">
                   <div class="d-flex">
                     <v-icon size="15" class="mr-2">mdi-phone</v-icon>
                     <div>+2347089324817</div>
@@ -182,7 +217,7 @@
                     <div>info@eaglevest.com</div>
                   </div>
                 </v-col>
-                <v-col cols="4">
+                <v-col cols="12" md="4">
                   <div class="d-flex">
                     <v-btn depressed icon color="transparent">
                       <v-icon color="white">mdi-facebook</v-icon>
@@ -196,7 +231,10 @@
                   </div>
                 </v-col>
                 <v-col cols="12">
-                  <p class="text-center">Created by EagleVest 2021 &nbsp;</p>
+                  <p
+                    class="text-center"
+                    :class="{'text-left': $vuetify.breakpoint.smAndDown}"
+                  >Created by EagleVest 2021 &nbsp;</p>
                 </v-col>
               </v-row>
             </v-container>
