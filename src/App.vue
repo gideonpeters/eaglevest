@@ -248,7 +248,7 @@ export default {
 
       let res = await fetch(url, {
         method: "POST",
-        mode: "cors",
+        mode: "no-cors",
         headers: {
           "Content-Type": "application/json;charset=utf-8",
           Authorization: `Basic ${token}`
