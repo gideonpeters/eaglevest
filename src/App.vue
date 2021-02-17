@@ -101,7 +101,7 @@
                 <v-row justify="center" class="mt-15">
                   <v-col cols="6" sm="12" md="6">
                     <div class="d-flex flex-column">
-                      <v-text-field
+                      <v-text-field v-model="email"
                         dark
                         placeholder="youremail@gmail.com"
                         label="Enter email address"
@@ -179,6 +179,7 @@ export default {
 
   data: () => ({
     isSubscribing: false,
+    email: "",
     highlightText:
       "Empowering students with the tools necessary to secure their finances in the future.",
     teamMembers: [
@@ -254,7 +255,7 @@ export default {
           Authorization: `Basic ${token}`
         },
         body: JSON.stringify({
-          email: this.email,
+          email_address: this.email,
           status: "subscribed"
         })
       })
