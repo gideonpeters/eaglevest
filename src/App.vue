@@ -101,7 +101,8 @@
                 <v-row justify="center" class="mt-15">
                   <v-col cols="6" sm="12" md="6">
                     <div class="d-flex flex-column">
-                      <v-text-field v-model="email"
+                      <v-text-field
+                        v-model="email"
                         dark
                         placeholder="youremail@gmail.com"
                         label="Enter email address"
@@ -249,7 +250,7 @@ export default {
 
       let res = await fetch(url, {
         method: "POST",
-        mode: "no-cors",
+        mode: "cors",
         headers: {
           "Content-Type": "application/json;charset=utf-8",
           Authorization: `Basic ${token}`
